@@ -56,7 +56,7 @@ class ContraBox<in T> (t: T){
 // covariant class -: we can give out the values (outputs) of type but cant consume it (t: T)
 // contra-variant class -: we can consume the values or outputs of type(t: T) but cant give outputs or values () : T
 
-class Box<T> (t: T){
+class BoxOne<T> (t: T){
     var value: T = t
 
     // class is neither covariant or contravariant so we can consume or give out value of type
@@ -71,10 +71,10 @@ class Box<T> (t: T){
 
 fun main(){
     // use site variance
-    val intBox: Box<Int> = Box(10)
-    val numberBox: Box<out Number> = intBox // we can accept the subtype of the type parameter (Int is subtype of Number )
+    val intBox: BoxOne<Int> = BoxOne(10)
+    val numberBox: BoxOne<out Number> = intBox // we can accept the subtype of the type parameter (Int is subtype of Number )
 
-    val numberBoxTwo:Box<Number> =  Box(10)
-    val intBoxTwo:Box<in Int> = numberBoxTwo // we can accept the supertype of type parameter (Number is super-type of Int
+    val numberBoxTwo:BoxOne<Number> =  BoxOne(10)
+    val intBoxTwo:BoxOne<in Int> = numberBoxTwo // we can accept the supertype of type parameter (Number is super-type of Int
     
 }
